@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick McDonnell's PC Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+:root {
+            --card-bg: rgba(255, 255, 255, 0.1);
+            --text-color: #333;
+            --accent-blue: #00eeff;
+            --accent-purple: #ba14ec;
+            --accent-pink: #ff9bbb;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f0f2f5;
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        /* Animations */
+        @keyframes shiny {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .shiny-text {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #f104d2 35%, #ffffff 50%, #eb1fb8 65%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shiny 4s linear infinite;
+            display: inline-block;
+        }
+
+        /* Section Styling */
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        @media (min-width: 900px) {
+            section {
+                grid-template-columns: 1.2fr 1fr; /* Media on left, text on right */
+            }
+        }
+
+        section:hover {
+            transform: translateY(-4px);
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.8rem;
+            border-bottom: 3px solid currentColor;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+        }
+
+        /* Media Gallery Grid */
+        .media-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .media-item {
+            object-fit: fill;
+            border-radius: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .media-item:hover {
+            transform: scale(1.10);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            z-index: 2;
+        }
+
+        /* Build Color Themes */
+        .build-blue { border-left: 10px solid var(--accent-blue); }
+        .build-purple { border-left: 10px solid var(--accent-purple); }
+        .build-pink { border-left: 10px solid var(--accent-pink); }
+
+        /* Glowing Effects */
+        .glow-blue:hover { box-shadow: 0 0 20px var(--accent-blue); }
+        .glow-purple:hover { box-shadow: 0 0 20px var(--accent-purple); }
+        .glow-cyan:hover { box-shadow: 0 0 20px cyan; }
+
+        .img-shadow{ box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); }
+
+        /* List Styling */
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        ul li::before {
+            content: "▹";
+            color: currentColor;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+        }
+
+        .specs-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1 style="text-align: center;">
+    <span class ="shiny-text">Nick McDonnell's Custom PC Showcase</span></h1>
+<br><p style="text-align: center; font-size: 22px;">Here you will find various PC builds I have done over the years along with parts specifications and details.<br><br><br><br></p>
+
+<section class="build-blue">
+    <h2> All Black RGB PC w/ Ryzen 5 4500, GTX 1660 Super 6GB </h2><br>
+    <img src="PC-R5-B-angle.jpg" alt="Ryzen 5 4500 GTX 1660 Super GB w/ 16GB DDR4 3200Mhz" class="img-shadow media-item" width="400" height="600">
+        <video controls="controls" class="img-shadow media-item" width="400" height="600" name="PC-Vid-Showcase-1660Super">
+        <source src="IMG_6009.mov">
+    </video>
+    <p><br><br><br>This build was made in late 2024 as a budget gaming PC from a budget of $500. 
+        It is capable of running most games at 1080p high settings with good framerates. The parts list is as follows:<br><br></p>
+    <ul>
+        <li> Ryzen 5 4500 6-core, 12-thread</li>
+        <li> GTX 1660 Super 6GB VRAM</li>
+        <li> 16GB DDR4 3200Mhz XPG RGB</li>
+        <li> ASrock B450M-HDV R4.0 AM4 Socket</li>
+        <li> Apevia SPIRIT600W Spirit 600W ATX PSU</li>
+        <li> EDUP PCI-E WiFi 6 Network Card</li>
+        <li> Cooler Master MasterBox Q300L Micro-ATX Tower</li>
+        <li> Thermalright TL-C12C-S X3 CPU Fans + ARGB fan hub</li>
+    </ul>
+</section>
+<section class ="build-purple">
+    <h2>All White RGB PC w/ Ryzen 5 5600, RTX 3070 8GB, 16GB DDR4 3200Mhz</h2><br>
+    <img src="PC-White-Side.jpg" alt="Ryzen 5 5600 RTX 3070 8GB w/ 32GB DDR4 3600Mhz" class="img-shadow media-item" width="400" height="600">
+    <img src="PC-White-Angle.jpg" alt="Ryzen 5 5600 RTX 3070 8GB w/ 32GB DDR4 3600Mhz" class="img-shadow media-item" width="400" height="600">
+    <img src="PC-White-Front.jpg" alt="Front View" class="img-shadow media-item" width="400" height="600">
+    <video controls muted="controls" class="img-shadow media-item" width="400" height="600" name="PC-Showcase-Video">
+        <source src="IMG_6282.mov">
+    </video>
+    <p><br>This build was made in early 2025 as a mid-range gaming PC from a budget of $800.
+        It is capable of running all games at 1080p ultra quality presets or most games at 1440p high settings with excellent framerates. 
+        The parts list is as follows:</p><br>
+    <ul>
+     <li> Ryzen 5 5500 6-core, 12-thread</li>
+     <li> RTX 3070 8GB VRAM</li>
+     <li> 32GB DDR4 3600Mhz RGB XPG</li>
+     <li> ASrock B550M AM4 Socket</li>
+     <li> Apevia SPIRIT 700W ATX PSU</li>
+     <li> 1TB KLEVV gen4x4 M.2 SSD</li>
+     <li> EDUP PCI-E WiFi 6 Network Card</li>
+     <li> SAMA White Micro-ATX Tower</li>
+     <li> Thermalright TL-C12CW-S X3 CPU Fan 120mm White ARGB Case Cooler</li>
+     <li> Sirlyr RGB 8 Pin PCIE Cable, 3 x 8Pin RGB GPU PSU Cables</li>
+    </ul>
+    <br>
+    <p> Here is a behind-the-scenes look at the build process on this computer: </p>
+    <video controls="controls" class="img-shadow media-item" width="400" height="600" name="PC-Build-Process">
+        <source src="BTS-PC-Build.mov">
+    </video>
+</section>
+
+<section class="build-pink">
+    <h2> Budget $350 PC Build w/ Ryzen 5 3600, GTX 1660 Super 6GB, 16GB DDR4 3000Mhz</h2><br>
+    <video controls="controls" class="img-shadow media-item" width="400" height="600" name="$350 PC Build">
+        <source src="IMG_6699.mov">
+</video>
+<img src="PC-White-BTS-Side.jpg" alt="Budget $350 PC Build w/ Ryzen 5 3600, GTX 1660 Super 6GB, 16GB DDR4 3000Mhz" class="img-shadow media-item" width="400" height="600">
+<p><br> Here is a look at a custom build I did for a friend on a TIGHT $350 budget during the summer of 2025. I wanted to make sure he had some 
+        RGB lighting and good performance for this price so that he could play the newest games with us. 
+        This build is capable of running esports titles at 1080p max settings with great framerates,
+        or most games at 1080p medium settings at 60-80fps. The parts list is as follows:</p>
+<br>
+ <ul>
+        <li> Ryzen 5 3600 6-core, 12-thread</li>
+        <li> GTX 1660 Super 6GB VRAM</li>
+        <li> 16GB DDR4 3200Mhz XPG</li>
+        <li> ASrock B450M-HDV R4.0 AM4 Socket</li>
+        <li> Apevia SPIRIT600W Spirit 600W ATX PSU</li>
+        <li> 500GB KLEVV gen3x4 M.2 SSD</li>
+        <li> 2TB Seagate HDD</li>
+        <li> Ali-Express $38 no-brand White PC Case</li>
+        <li> Thermalright TL-C12C-S X3 CPU Fans + ARGB fan hub</li>
+    </ul>
+</section>
+</body>
+</html>
