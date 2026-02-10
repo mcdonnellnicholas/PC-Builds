@@ -19,7 +19,7 @@
             background-color: #f0f2f5;
             color: var(--text-color);
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             line-height: 1.6;
         }
 
@@ -30,7 +30,7 @@
 
         header {
             text-align: center;
-            padding: 60px 0;
+            padding-top: 90px;
         }
 
         /* Animations */
@@ -74,6 +74,56 @@
             transform: translateY(-4px);
         }
 
+
+        
+        /* Fixed sidenav, full height */
+        .topnav {
+        height: 75px;
+        width: 95%;
+        text-align: center;
+        position: sticky;
+        z-index: 0;
+        background-color: #413e3e;
+        padding-top: 20px;
+        margin-bottom: 20px;
+        margin-right: 20px;
+        margin-left: 20px;
+        color: #c9c8c8;
+        font-size: 20px;
+        display: flex; /* Centers links horizontally */
+        justify-content: center;
+        gap: 10px;
+        }
+
+        .topnav:hover {
+        background-color: #636262; 
+        transition: 0.3s;
+        }
+
+        /* Style the sidenav links and the dropdown button */
+        .topnav a, .dropdown-btn {
+        transition: 0.3s;
+        padding: 6px 8px 6px 18px;
+        margin-bottom: 20px;
+        text-decoration: dashed;
+        color: #818181;
+        display: inline-block;
+        background: none;
+        text-align: left;
+        cursor: pointer;
+        outline: none;
+        }
+        
+        /* Hover effect for the individual link blocks only */
+        .topnav a:hover {
+            background-color: #b4b4b4; /* Highlights just the block behind the text */
+            color: #333 !important;    /* Changes text color for contrast */
+        }
+
+        a:visited {
+            color: inherit; /* Or specify white */
+        }
+
         h2 {
             margin-top: 0;
             font-size: 1.8rem;
@@ -95,16 +145,17 @@
             border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
+            z-index: 1;
         }
 
         .media-item:hover {
             transform: scale(1.10);
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            z-index: 2;
+            z-index: 1;
         }
 
         /* Build Color Themes */
-        .build-blue { border-left: 10px solid var(--accent-blue); }
+        .build-blue { border-left: 10px solid var(--accent-blue);}
         .build-purple { border-left: 10px solid var(--accent-purple); }
         .build-pink { border-left: 10px solid var(--accent-pink); }
 
@@ -145,11 +196,18 @@
 </head>
 <body>
 
-<h1 style="text-align: center;">
+<h1 style="text-align: center;" >
     <span class ="shiny-text">Nick McDonnell's Custom PC Showcase</span></h1>
-<br><p style="text-align: center; font-size: 22px;">Here you will find various PC builds I have done over the years along with parts specifications and details.<br><br><br><br></p>
+    
+    <p style="text-align: center; font-size: 22px; z-index: -1; margin-top: 30pt;" >Here you will find various PC builds I have done over the years along with parts specifications and details.</p>
+    <nav class="topnav" style = "margin-block: 25pt;">
+  <a href="#build-blue" style="text-decoration: underline;"> GTX 1660  All Black RGB PC</a>
+  <a href="#build-purple" style="text-decoration: underline;"> RTX 3070 All White PC </a>
+  <a href="#build-pink" style="text-decoration: underline;"> Budget GTX 1660 Super </a>
+  <a href="https://www.linkedin.com/in/nicholas-mcdonnell-90b988276/" target="_blank" style="text-decoration: underline;">LinkedIn</a>
 
-<section class="build-blue">
+</nav>
+<section class="build-blue" id="build-blue">
     <h2> All Black RGB PC w/ Ryzen 5 4500, GTX 1660 Super 6GB </h2><br>
     <img src="PC-R5-B-angle.jpg" alt="Ryzen 5 4500 GTX 1660 Super GB w/ 16GB DDR4 3200Mhz" class="img-shadow media-item" width="400" height="600">
         <video controls="controls" class="img-shadow media-item" width="400" height="600" name="PC-Vid-Showcase-1660Super">
@@ -168,7 +226,7 @@
         <li> Thermalright TL-C12C-S X3 CPU Fans + ARGB fan hub</li>
     </ul>
 </section>
-<section class ="build-purple">
+<section class ="build-purple" id = "build-purple">
     <h2>All White RGB PC w/ Ryzen 5 5600, RTX 3070 8GB, 16GB DDR4 3200Mhz</h2><br>
     <img src="PC-White-Side.jpg" alt="Ryzen 5 5600 RTX 3070 8GB w/ 32GB DDR4 3600Mhz" class="img-shadow media-item" width="400" height="600">
     <img src="PC-White-Angle.jpg" alt="Ryzen 5 5600 RTX 3070 8GB w/ 32GB DDR4 3600Mhz" class="img-shadow media-item" width="400" height="600">
@@ -198,7 +256,7 @@
     </video>
 </section>
 
-<section class="build-pink">
+<section class="build-pink" id = "build-pink">
     <h2> Budget $350 PC Build w/ Ryzen 5 3600, GTX 1660 Super 6GB, 16GB DDR4 3000Mhz</h2><br>
     <video controls="controls" class="img-shadow media-item" width="400" height="600" name="$350 PC Build">
         <source src="IMG_6699-compressed.mov">
