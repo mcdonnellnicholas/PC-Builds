@@ -49,6 +49,9 @@
             -webkit-text-fill-color: transparent;
             animation: shiny 4s linear infinite;
             display: inline-block;
+            padding-bottom: 25px;
+            border-bottom: 3px solid currentColor;
+
         }
 
         /* Section Styling */
@@ -59,9 +62,8 @@
             margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
+            display:block;
+
         }
 
         @media (min-width: 900px) {
@@ -140,6 +142,8 @@
         .media-item {
             object-fit: fill;
             border-radius: 12px;
+            margin-inline-end: 20px;
+            margin-bottom: 20px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             cursor: pointer;
             z-index: 1;
@@ -247,7 +251,7 @@
      <li> Sirlyr RGB 8 Pin PCIE Cable, 3 x 8Pin RGB GPU PSU Cables</li>
     </ul>
     <br>
-    <p> Here is a behind-the-scenes look at the build process on this computer:  
+    <p> Here is a behind-the-scenes look at the build process on this computer: </p> 
 <video controls="controls" class="img-shadow media-item" width="400" height="600" name="PC-Build-Process" style="margin-top: 50px;">
         <source src="BTS-PC-Build-compressed.mov"></p>
     </video>
