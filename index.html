@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
     <title>Nick McDonnell's PC Showcase</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -12,6 +14,7 @@
             --accent-blue: #00eeff;
             --accent-purple: #ba14ec;
             --accent-pink: #ff9bbb;
+            --accent-crypto: #2c3e50;
         }
 
         body {
@@ -162,6 +165,7 @@
         .build-blue { border-left: 10px solid var(--accent-blue);}
         .build-purple { border-left: 10px solid var(--accent-purple); }
         .build-pink { border-left: 10px solid var(--accent-pink); }
+        .build-crypto { border-left: 10px solid var(--accent-crypto); }
 
         /* Glowing Effects */
         .glow-blue:hover { box-shadow: 0 0 20px var(--accent-blue); }
@@ -209,6 +213,7 @@
   <a href="#build-blue" style="text-decoration: underline; z-index: -1;"> GTX 1660  All Black RGB PC</a>
   <a href="#build-purple" style="text-decoration: underline;"> RTX 3070 All White PC </a>
   <a href="#build-pink" style="text-decoration: underline;"> Budget GTX 1660 Super </a>
+  <a href="#cryptography"> Serpent Cipher (Python) </a>
   <a href="https://www.linkedin.com/in/nicholas-mcdonnell-90b988276/" target="_blank" style="text-decoration: underline;">LinkedIn</a>
 
 </nav>
@@ -287,6 +292,85 @@
         <li> Ali-Express $38 no-brand White PC Case</li>
         <li> Thermalright TL-C12C-S X3 CPU Fans + ARGB fan hub</li>
     </ul>
+</section>
+<section class="build-crypto" id="cryptography">
+    <div class="info-column">
+        <h2>Senior Final Project: Serpent Cipher</h2>
+        <p>This implementation of the Serpent block cipher features:</p>
+        <ul>
+            <li><strong>Bit-Slice Processing:</strong> Simultaneous 32-bit register application of 4-bit S-boxes.</li>
+            <li><strong>32-Round Logic:</strong> Full implementation of encryption and decryption loops.</li>
+            <li><strong>Key Schedule:</strong> 256-bit expansion based on the golden ratio ($\phi$).</li>
+            <li><strong>Padding:</strong> Integrated PKCS#7 support for variable-length messages.</li>
+        </ul>
+        
+        <div style="margin-top: 20px;">
+            <a href="Serpent.py" download class="media-item" style="padding: 10px 20px; background: var(--accent-crypto); color: white; text-decoration: none; display: inline-block; border-radius: 8px; text-align: center;">
+                📥 Download Serpent.py
+            </a>
+        </div>
+    </div>
+
+    <div class="specs-container" style="background: #1e1e1e; color: #00ff00; padding: 20px; border-radius: 12px; font-family: monospace;">
+        <h3>Serpent Live Console</h3>
+        <label>Secret Key:</label>
+        <input type="text" id="cipher-key" placeholder="Enter key..." style="width: 100%; background: #333; color: #fff; border: 1px solid #555; margin-bottom: 10px;">
+        
+        <label>Message / Hex:</label>
+        <textarea id="cipher-input" placeholder="Enter message to encrypt or hex to decrypt..." style="width: 100%; background: #333; color: #fff; border: 1px solid #555; height: 60px;"></textarea>
+        
+        <div style="display: flex; gap: 10px; margin-top: 10px;">
+            <button py-click="web_encrypt" style="flex: 1; cursor: pointer; background: #2c3e50; color: white; border: none; padding: 5px;">Encrypt</button>
+            <button py-click="web_decrypt" style="flex: 1; cursor: pointer; background: #2c3e50; color: white; border: none; padding: 5px;">Decrypt</button>
+        </div>
+
+        <div style="margin-top: 15px; border-top: 1px solid #444; padding-top: 10px;">
+            <strong>Output:</strong>
+            <p id="cipher-output" style="word-break: break-all; color: #00eeff;">Waiting for input...</p>
+        </div>
+    </div>
+
+    <script type="py">
+        from pyscript import display, document
+        # We import your Serpent logic here
+        # (Assuming Serpent.py content is pasted here or available in the path)
+        
+        # [The full contents of your Serpent.py logic would be defined here]
+        # For brevity in this response, I'm defining the UI hooks:
+
+        def web_encrypt(event):
+            key = document.querySelector("#cipher-key").value.encode('utf-8')
+            msg = document.querySelector("#cipher-input").value.encode('utf-8')
+            
+            # Simple padding logic from your code
+            if len(key) < 32: key = key.ljust(32, b'\0')
+            cipher = SerpentCipher(key[:32])
+            
+            padded_pt = pad_data(msg)
+            ciphertext = b""
+            for i in range(0, len(padded_pt), 16):
+                ciphertext += cipher.encrypt_block(padded_pt[i:i+16])
+            
+            document.querySelector("#cipher-output").innerText = ciphertext.hex()
+
+        def web_decrypt(event):
+            try:
+                key = document.querySelector("#cipher-key").value.encode('utf-8')
+                hex_ct = document.querySelector("#cipher-input").value.strip()
+                
+                if len(key) < 32: key = key.ljust(32, b'\0')
+                cipher = SerpentCipher(key[:32])
+                
+                ciphertext = bytes.fromhex(hex_ct)
+                decrypted_padded = b""
+                for i in range(0, len(ciphertext), 16):
+                    decrypted_padded += cipher.decrypt_block(ciphertext[i:i+16])
+                
+                plaintext = unpad_data(decrypted_padded)
+                document.querySelector("#cipher-output").innerText = plaintext.decode('utf-8')
+            except Exception as e:
+                document.querySelector("#cipher-output").innerText = "Error: Invalid Hex or Key."
+    </script>
 </section>
 </body>
 </html>
